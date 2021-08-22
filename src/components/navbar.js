@@ -1,5 +1,7 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 export default ({ isActive }) => {
+  const history = useHistory();
   return (
     <>
       <header className='py-2'>
@@ -27,7 +29,7 @@ export default ({ isActive }) => {
                     <li
                       className={`nav-item  ${isActive == 0 ? 'active' : ''}`}
                     >
-                      <a className='nav-link' href='#'>
+                      <a className='nav-link' onClick={() => history.push('/')}>
                         1. Your location{' '}
                         <span className='sr-only'>(current)</span>
                       </a>
@@ -38,7 +40,10 @@ export default ({ isActive }) => {
                     <li
                       className={`nav-item  ${isActive == 1 ? 'active' : ''}`}
                     >
-                      <a className='nav-link' href='#'>
+                      <a
+                        className='nav-link'
+                        onClick={() => history.push('flight')}
+                      >
                         2. Flight
                       </a>
                     </li>
@@ -48,7 +53,10 @@ export default ({ isActive }) => {
                     <li
                       className={`nav-item  ${isActive == 2 ? 'active' : ''}`}
                     >
-                      <a className='nav-link' href='#'>
+                      <a
+                        className='nav-link'
+                        onClick={() => history.push('hotel')}
+                      >
                         3. Hotel
                       </a>
                     </li>
@@ -58,7 +66,10 @@ export default ({ isActive }) => {
                     <li
                       className={`nav-item  ${isActive == 3 ? 'active' : ''}`}
                     >
-                      <a className='nav-link' href='#'>
+                      <a
+                        className='nav-link'
+                        onClick={() => history.push('personal-info')}
+                      >
                         4. Personal Information
                       </a>
                     </li>
@@ -68,7 +79,10 @@ export default ({ isActive }) => {
                     <li
                       className={`nav-item  ${isActive == 4 ? 'active' : ''}`}
                     >
-                      <a className='nav-link' href='#'>
+                      <a
+                        className='nav-link'
+                        onClick={() => history.push('confirm')}
+                      >
                         5. Confirmation
                       </a>
                     </li>

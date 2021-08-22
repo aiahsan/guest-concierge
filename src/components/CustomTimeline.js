@@ -3,6 +3,9 @@ import moment from 'moment';
 import generateFakeData from './generate-fake-data';
 import Timeline from './components/chart';
 import './components/chart/Timeline.css';
+import Tooltip from 'rc-tooltip';
+import 'rc-tooltip/assets/bootstrap.css';
+
 import Icon from '../style/icons';
 var keys = {
   groupIdKey: 'id',
@@ -124,43 +127,65 @@ export default class App extends Component {
       : item.bgColor;
     const borderColor = itemContext.resizing ? 'red' : item.color;
     return (
-      <div
-        {...getItemProps({
-          style: {
-            backgroundColor,
-            color: item.color,
-            borderStyle: 'solid',
-            borderColor: 'transparent',
-            borderWidth: 1,
-            borderLeftWidth: itemContext.selected ? 10 : 1,
-            borderRightWidth: itemContext.selected ? 10 : 1,
-          },
-          onMouseDown: () => {
-            console.log('on item click', item);
-          },
-        })}
+      <Tooltip
+        placement='bottom'
+        trigger={['hover']}
+        overlay={
+          <div className='tooltip-cst'>
+            <h1 className='mb-3'>UX/UI design section at our Boston office</h1>
+            <h2>Time (Boston)</h2>
+            <p className='m-0'>
+              8 - 10 pm EET <span>+1</span>
+            </p>
+            <h3 className='mt-2'>Location</h3>
+            <p className='m-0'>31 State St Ste 7, Boston, MA 0210</p>
+            <h3 className='mt-2'>Starts</h3>
+            <p className='m-0'>10:45 am, Wed 24</p>
+            <h3 className='mt-2'>Ends</h3>
+            <p className='m-0'>7:00 am, Wed 01</p>
+            <h3 className='mt-2'>Hotels</h3>
+            <p className='m-0'>12 nights</p>
+          </div>
+        }
       >
-        {itemContext.useResizeHandle ? <div {...leftResizeProps} /> : null}
-
         <div
-          style={{
-            height: itemContext.dimensions.height,
-            overflow: 'hidden',
-            paddingLeft: 3,
-            textOverflow: 'ellipsis',
-            whiteSpace: 'nowrap',
-            color: 'black',
-            borderColor: 'transparent',
-            fontSize: 19,
-          }}
-          onMouseOver={(x) => {}}
+          {...getItemProps({
+            style: {
+              backgroundColor,
+              color: item.color,
+              borderStyle: 'solid',
+              borderColor: 'transparent',
+              borderWidth: 1,
+              borderLeftWidth: itemContext.selected ? 10 : 1,
+              borderRightWidth: itemContext.selected ? 10 : 1,
+            },
+            onMouseDown: () => {
+              console.log('on item click', item);
+            },
+          })}
         >
-          <GetBar type={item.type} item={item} />
-          {itemContext.title}
-        </div>
+          {itemContext.useResizeHandle ? <div {...leftResizeProps} /> : null}
 
-        {itemContext.useResizeHandle ? <div {...rightResizeProps} /> : null}
-      </div>
+          <div
+            style={{
+              height: itemContext.dimensions.height,
+              overflow: 'hidden',
+              paddingLeft: 3,
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+              color: 'black',
+              borderColor: 'transparent',
+              fontSize: 19,
+            }}
+            onMouseOver={(x) => {}}
+          >
+            <GetBar type={item.type} item={item} />
+            {itemContext.title}
+          </div>
+
+          {itemContext.useResizeHandle ? <div {...rightResizeProps} /> : null}
+        </div>
+      </Tooltip>
     );
   };
 

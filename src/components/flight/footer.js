@@ -1,5 +1,5 @@
 import React from 'react';
-export default () => {
+export default ({ onClick }) => {
   return (
     <footer className='py-4'>
       <div className='container-fluid'>
@@ -23,7 +23,10 @@ export default () => {
                 >
                   Decline
                 </a>
-                <a href='#_' className='site-btn d-inline-block px-5 py-2 mt-3'>
+                <a
+                  onClick={() => (onClick ? onClick() : console.log())}
+                  className='site-btn d-inline-block px-5 py-2 mt-3'
+                >
                   Book Flight
                 </a>
               </div>

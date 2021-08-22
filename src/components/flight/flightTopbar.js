@@ -1,5 +1,5 @@
 import React from 'react';
-export default ({ sidebaropen, isrecomended }) => {
+export default ({ sidebaropen, isrecomended, setSidebaropen }) => {
   return (
     <div className='col-12 flightTopBar'>
       <div
@@ -49,7 +49,10 @@ export default ({ sidebaropen, isrecomended }) => {
               id=''
               className='site-input w-48 blue-bg px-0 py-2'
             />
-            <button className='btn btn-menu'>
+            <button
+              className='btn btn-menu'
+              onClick={() => setSidebaropen(!sidebaropen)}
+            >
               <i className='fas fa-bars color-bggray1'></i>
             </button>
           </div>

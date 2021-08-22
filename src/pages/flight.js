@@ -5,8 +5,11 @@ import CustomTimeline from '../components/CustomTimeline';
 import FlightSidebar from '../components/flight/flightSidebar';
 import FlightTopBar from '../components/flight/flightTopbar';
 import RightBar from '../components/flight/rightBar';
+import Fade from 'react-reveal/Fade';
+import { useHistory } from 'react-router-dom';
 export default () => {
   const [sidebaropen, setSidebaropen] = React.useState(false);
+  const history = useHistory();
   return (
     <div>
       <Navbar isActive={1} />
@@ -22,7 +25,10 @@ export default () => {
               } pb-lg-5 pb-4 bg-white px-lg-4 px-3 py-4`}
             >
               <div className='row'>
-                <FlightTopBar sidebaropen={sidebaropen} />
+                <FlightTopBar
+                  setSidebaropen={setSidebaropen}
+                  sidebaropen={sidebaropen}
+                />
 
                 <CustomTimeline setSidebaropen={setSidebaropen} />
                 <div className='col-12 py-5 mt-3 text-center l-blue-bg'>
@@ -35,13 +41,17 @@ export default () => {
                 </div>
               </div>
             </div>
-            <div className={`${sidebaropen == true ? 'col-md-2' : 'dsp-none'}`}>
-              <RightBar setSidebaropen={setSidebaropen} />
-            </div>
+            <Fade right>
+              <div
+                className={`${sidebaropen == true ? 'col-md-2' : 'dsp-none'}`}
+              >
+                <RightBar setSidebaropen={setSidebaropen} />
+              </div>
+            </Fade>
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer onClick={() => history.push('flight-book')} />
     </div>
   );
 };

@@ -5,8 +5,12 @@ import CustomTimeline from '../components/CustomTimeline';
 import FlightSidebar from '../components/flight/flightSidebar';
 import FlightTopBar from '../components/flight/flightTopbar';
 import RightBar from '../components/flight/rightBar';
+import { useHistory } from 'react-router-dom';
+
 export default () => {
   const [sidebaropen, setSidebaropen] = React.useState(false);
+  const history = useHistory();
+
   return (
     <div>
       <Navbar isActive={3} />
@@ -111,7 +115,7 @@ export default () => {
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer onClick={() => history.push('confirm')} />
     </div>
   );
 };

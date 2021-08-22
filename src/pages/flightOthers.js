@@ -7,8 +7,11 @@ import FlightTopBar from '../components/flight/flightTopbar';
 import RightBar from '../components/flight/rightBar';
 import FlightTable from '../components/flight/flightTable';
 import Timeline from '../components/CustomTimeline';
+import { useHistory } from 'react-router-dom';
 export default () => {
   const [sidebaropen, setSidebaropen] = React.useState(false);
+  const history = useHistory();
+
   return (
     <div>
       <Navbar isActive={1} />
@@ -24,7 +27,11 @@ export default () => {
               } pb-lg-5 pb-4 bg-white px-lg-4 px-3 py-4`}
             >
               <div className='row'>
-                <FlightTopBar isrecomended={true} sidebaropen={sidebaropen} />
+                <FlightTopBar
+                  isrecomended={true}
+                  setSidebaropen={setSidebaropen}
+                  sidebaropen={sidebaropen}
+                />
                 <Timeline label='Recommended' isrecomended={true} />
 
                 <div class='col-12 mt-3'>
@@ -161,7 +168,7 @@ export default () => {
           </div>
         </div>
       </section>
-      <Footer />
+      <Footer onClick={() => history.push('hotel')} />
     </div>
   );
 };

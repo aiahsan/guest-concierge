@@ -79,6 +79,7 @@ select.site-input.blue-bg {
   text-align: center;
   border-radius: 5px;
   transition: ease-in-out 0.2s;
+  cursor: pointer;
 }
 .site-btn:hover,
 .border-btn {
@@ -318,4 +319,46 @@ input[type='number'] {
   border: none !important;
   box-shadow: none !important;
   border-radius: 0px !important;
+}
+
+.rc-tooltip-arrow {
+  display: none;
+}
+.rc-tooltip-inner {
+  background-color: white !important;
+  width: 275px;
+  border-radius: 5px;
+  color: black;
+}
+.tooltip-cst {
+  padding: 10px;
+  background-color: white;
+}
+.tooltip-cst h1 {
+  color: #2a2c33;
+  font-family: 'MuliS';
+  font-size: 20px !important;
+  font-weight: 400;
+  line-height: 24px;
+  max-width: 221px;
+}
+.tooltip-cst h2,
+.tooltip-cst h3 {
+  color: #2a2c33;
+  font-family: 'MuliS';
+
+  font-size: 16px !important;
+  font-weight: 400;
+  line-height: 19px;
+}
+.tooltip-cst p {
+  color: #2a2c33;
+
+  font-size: 14px !important;
+  font-weight: 400;
+  line-height: 20px;
+  text-align: left;
+}
+.nav-link {
+  cursor: pointer;
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import Navbar from '../components/navbar';
+import { useHistory } from 'react-router-dom';
+
 import {
   Link,
   DirectLink,
@@ -11,6 +13,8 @@ import {
 } from 'react-scroll';
 
 export default () => {
+  const history = useHistory();
+
   const [isConfirm, setisConfirm] = React.useState(false);
   return (
     <div>
